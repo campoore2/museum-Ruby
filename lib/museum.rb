@@ -34,4 +34,14 @@ class Museum
     DB.exec("DELETE FROM museums WHERE id = #{id}")
     DB.exec("DELETE FROM museums WHERE artwork_id = #{id}")
   end
+
+  define_method(:==) do |another_museum|
+    self.id == another_museum.id
+  end
+
+  define_method(:update) do |attributes|
+    @id = self.id()
+    @name = attributes.fetch(:name)
+    DB.exec("UPDATE museums SET name = '#{@name}' WHERE id = #{@id};")
+  end
 end
