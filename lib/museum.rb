@@ -3,7 +3,7 @@ class Museum
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = attributes[:id] || nil
+    @id = attributes.fetch(:id)
   end
 
   define_singleton_method(:all) do
@@ -16,8 +16,9 @@ class Museum
     end
     museums
   end
-end
 
-# define_method(:save) do
-#   result = DB.exec
-# end
+  define_method(:save) do
+    result = DB.exec("INSERT INTO museums (name) VALUES ('#{@name}') RETURNING id;")
+    @id = result.irst().fetch("id").to_i
+  end
+end
