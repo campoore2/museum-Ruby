@@ -3,13 +3,13 @@ class Museum
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    # @id = attributes.fetch(:id).to_i()
+    @id = attributes.fetch(:id).to_i()
   end
 
   define_singleton_method(:all) do
-    returned_museum = DB.exec('SELECT * FROM musuems;')
+    returned_museums = DB.exec("SELECT * FROM museums;")
     museums = []
-    returned_museum.each() do |museum|
+    returned_museums.each() do |museum|
       name = museum.fetch('name')
       id = museum.fetch('id').to_i
       museum.push(Museum.new({:name => name, :id => id}))
