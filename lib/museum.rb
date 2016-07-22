@@ -1,9 +1,9 @@
 class Museum
-  attr_reader(:name, :id)
+  attr_reader(:name)
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = attributes.fetch(:id)
+    # @id = attributes.fetch(:id).to_i()
   end
 
   define_singleton_method(:all) do
@@ -19,6 +19,19 @@ class Museum
 
   define_method(:save) do
     result = DB.exec("INSERT INTO museums (name) VALUES ('#{@name}') RETURNING id;")
-    @id = result.irst().fetch("id").to_i
+    @id = result.first().fetch("id").to_i
+  end
+
+  define_singleton_method(:find) do |identity|
+    Museums.all().each() do |museums|
+      if museum.id() == identity
+        return museum
+      end
+    end
+  end
+
+  define_singleton_method(:delete) do |id|
+    DB.exec("DELETE FROM museums WHERE id = #{id}")
+    DB.exec("DELETE FROM museums WHERE artwork_id = #{id}")
   end
 end
