@@ -39,7 +39,6 @@ class Museum
   end
 
   define_method(:update) do |attributes|
-    @id = self.id()
     @name = attributes.fetch(:name)
     DB.exec("UPDATE museums SET name = '#{@name}' WHERE id = #{@id};")
   end

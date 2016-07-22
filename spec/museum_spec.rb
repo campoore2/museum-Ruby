@@ -15,15 +15,15 @@ describe(Museum) do
     end
   end
 
-  # describe('#update') do
-  #   it('changes the value of a museum') do
-  #     test_museum = Museum.new({:name => "Muse"})
-  #     test_museum.save()
-  #     test_museum.update({:name => "Museum"})
-  #     expect(test_museum.name()).to(eq("Museum"))
-  #   end
-  # end
-  #
+  describe('#update') do
+    it('changes the value of a museum') do
+      test_museum = Museum.new({:name => "Muse"})
+      test_museum.save()
+      test_museum.update({:name => "Museum"})
+      expect(test_museum.name()).to(eq("Museum"))
+    end
+  end
+  
   # describe("#delete") do
   #   it('will remove a museum from the database') do
   #     test_museum = Museum.new({:name => "Smithsonian"})
