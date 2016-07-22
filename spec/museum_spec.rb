@@ -7,13 +7,13 @@ describe(Museum) do
     end
   end
 
-  # describe('#save') do
-  #   it("saves a value in the museums table") do
-  #     test_museum = Museum.new({:name => "Smithsonian"})
-  #     test_museum.save()
-  #     expect(Museum.all()).to(eq([test_museum]))
-  #   end
-  # end
+  describe('#save') do
+    it("saves a value in the museums table") do
+      test_museum = Museum.new({:name => "Smithsonian"})
+      test_museum.save()
+      expect(Museum.all()).to(eq([test_museum]))
+    end
+  end
 
   # describe('#update') do
   #   it('changes the value of a museum') do

@@ -3,7 +3,6 @@ class Museum
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = attributes.fetch(:id).to_i()
   end
 
   define_singleton_method(:all) do
@@ -12,7 +11,7 @@ class Museum
     returned_museums.each() do |museum|
       name = museum.fetch('name')
       id = museum.fetch('id').to_i
-      museum.push(Museum.new({:name => name, :id => id}))
+      museums.push(Museum.new({:name => name}))
     end
     museums
   end
@@ -36,7 +35,7 @@ class Museum
   end
 
   define_method(:==) do |another_museum|
-    self.id == another_museum.id
+    self.name == another_museum.name
   end
 
   define_method(:update) do |attributes|
