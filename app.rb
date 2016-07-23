@@ -55,3 +55,10 @@ end
 get '/curator/artworks/add/' do
   erb(:add_art)
 end
+
+post '/curator/artworks/add' do
+  @name = params.fetch('artwork_name')
+  art = art.new({:name => @name})
+  art.save()
+  erb(:edit_museum)
+end
