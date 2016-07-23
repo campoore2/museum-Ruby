@@ -12,6 +12,7 @@ get('/') do
 end
 
 get '/curator/museums/' do
+  @museums = Museum.all()
   erb(:curator)
 end
 
@@ -25,4 +26,15 @@ post '/curator/museums/new' do
   museum.save()
   @museums = Museum.all()
   erb(:curator)
+end
+
+get '/curator/museums/edit/' do
+  erb(:edit_museum)
+end
+
+patch '/curator/museums/edit/museum' do
+  @name = params.fetch('museum_name')
+  @museum.update({:name => @name})
+  @museums = Museum.all()
+  redirect("/curator/museums/")
 end

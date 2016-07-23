@@ -1,9 +1,18 @@
 <h1>Welcome Curator</h1>
 
+<h2>Current Museums</h2>
+<h6>Click on a museum to edit it.</h6>
+<% if @museums.any?() %>
+  <% @museums.each() do |museum| %>
+  <h5><a class="btn btn-default" href="/curator/museums/edit/<% museum.name() %>"><%= museum.name() %></a></h5>
+  <% end %>
+<% else %>
+  <h5>No Museums</h5>
+<% end %>
+
 <h2>Do you want to:</h2>
 
 <a class="btn btn-default" href="/curator/museums/new">Add a Museum</a>
-<a class="btn btn-default" href="/curator/museums/edit">Edit a Museum</a>
 
 <br>
 <br>

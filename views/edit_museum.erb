@@ -1,0 +1,13 @@
+<h1>Edit Museum</h1>
+
+<form action="/curator/museums/edit/museum" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="museum_name">Update Museum Name</label>
+  <input type="text" name="museum_name">
+  <button type="submit">Change</button>
+</form>
+
+<form action="/curator/museums/edit/museum" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn btn-danger">Remove this Museum</button>
+</form>
