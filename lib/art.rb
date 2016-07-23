@@ -39,4 +39,11 @@ class Art
   define_singleton_method(:delete) do |id|
     DB.exc("DELETE FROM artworks WHERE id = #{id}")
   end
+
+  define_method(:update) do |attributes|
+    @id = self.id()
+    @name = attributes.fetch(:name)
+    @museum_id = attributes.fetch(:museum_id).to_i()
+    DB.exec("UPDATE museums SET name = '#{name}', museum_id = #{@museum_id} WHERE id = #{@id}")
+  end
 end
