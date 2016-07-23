@@ -24,14 +24,14 @@ describe(Museum) do
     end
   end
 
-  describe("#delete") do
-    it('will remove a museum from the database') do
-      test_museum = Museum.new({:name => "Smithsonian"})
-      test_museum.save()
-      Museum.delete(test_museum.name())
-      expect(Museum.all()).to(eq([]))
-    end
-  end
+  # describe("#delete") do
+  #   it('will remove a museum from the database') do
+  #     test_museum = Museum.new({:name => "Smithsonian"})
+  #     test_museum.save()
+  #     Museum.delete(test_museum.name())
+  #     expect(Museum.all()).to(eq([]))
+  #   end
+  # end
 
   describe("#==") do
     it('will return two of the same name') do

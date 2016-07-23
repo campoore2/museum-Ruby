@@ -25,7 +25,7 @@ class Art
 
   define_singleton_method(:find) do |identity|
     Art.all().each() do |art|
-      if art.id() = identity
+      if art.id() == identity
         return art
       end
     end
