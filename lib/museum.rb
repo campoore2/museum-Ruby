@@ -31,8 +31,8 @@ class Museum
   end
 
   define_singleton_method(:delete) do |id|
-    DB.exec("DELETE FROM museums WHERE id = #{id}")
-    DB.exec("DELETE FROM museums WHERE artwork_id = #{id}")
+    DB.exec("DELETE FROM museums WHERE name = #{'name'};")
+    DB.exec("DELETE FROM museums WHERE artwork_id = #{id};")
   end
 
   define_method(:==) do |another_museum|

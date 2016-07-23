@@ -28,7 +28,7 @@ describe(Museum) do
     it('will remove a museum from the database') do
       test_museum = Museum.new({:name => "Smithsonian"})
       test_museum.save()
-      Museum.delete(test_museum.id())
+      Museum.delete(test_museum.name())
       expect(Museum.all()).to(eq([]))
     end
   end
