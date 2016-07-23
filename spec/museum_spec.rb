@@ -32,12 +32,12 @@ describe(Museum) do
       expect(Museum.all()).to(eq([]))
     end
   end
-  
-  # describe("#==") do
-  #   it('will return two of the same name') do
-  #     test_museum = Museum.new({:name => "Smithsonian"})
-  #     test_museum2 = Museum.new({:name => "Smithsonian"})
-  #     expect(test_museum).to(eq(test_museum2))
-  #   end
-  # end
+
+  describe("#==") do
+    it('will return two of the same name') do
+      test_museum = Museum.new({:name => "Smithsonian"})
+      test_museum2 = Museum.new({:name => "Smithsonian"})
+      expect(test_museum).to(eq(test_museum2))
+    end
+  end
 end
