@@ -1,4 +1,12 @@
 <h1>Edit Museum</h1>
+<h6>Click on a museum to edit art.</h6>
+<% if @arts.any?() %>
+  <% @arts.each() do |art| %>
+  <h5><a class="btn btn-default" href="/curator/artworks/edit/<% art.name() %>"><%= art.name() %></a></h5>
+  <% end %>
+<% else %>
+  <h5>No Art</h5>
+<% end %>
 
 <form action="/curator/museums/edit/museum" method="post">
   <input type="hidden" name="_method" value="patch">
@@ -11,3 +19,7 @@
   <input type="hidden" name="_method" value="delete">
   <button type="submit" class="btn btn-danger">Remove this Museum</button>
 </form>
+<br>
+<br>
+<a class="btn btn-default" href="/">Home</a>
+<a class="btn btn-default" href="/curator/museums/">Back</a>
