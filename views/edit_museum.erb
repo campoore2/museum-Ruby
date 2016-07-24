@@ -1,4 +1,4 @@
-<h1>Edit Museum</h1>
+<h1>Edit <%=@museum.name %></h1>
 <h6>Click on a museum to edit art.</h6>
 <% if @arts.any?() %>
   <% @arts.each() do |art| %>
@@ -8,7 +8,7 @@
   <h5>No Art</h5>
 <% end %>
 
-<form action="/curator/museums/edit/museum/<%=@museum.id%>" method="post">
+<form action="/curator/museums/<%=@museum.id%>/edit" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="museum_name">Update Museum Name</label>
   <input type="text" name="museum_name">

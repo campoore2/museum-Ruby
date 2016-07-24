@@ -37,7 +37,7 @@ class Art
   end
 
   define_singleton_method(:delete) do |id|
-    DB.exc("DELETE FROM artworks WHERE id = #{id}")
+    DB.exec("DELETE FROM artworks WHERE id = #{id}")
   end
 
   define_method(:update) do |attributes|

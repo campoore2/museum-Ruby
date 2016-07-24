@@ -12,7 +12,7 @@ class Museum
     returned_museums.each() do |museum|
       name = museum.fetch('name')
       id = museum.fetch('id').to_i
-      museums.push(Museum.new({:name => name}))
+      museums.push(Museum.new({:name => name, :id => id}))
     end
     museums
   end
@@ -22,12 +22,14 @@ class Museum
     @id = result.first().fetch("id").to_i
   end
 
-  define_singleton_method(:find) do |identity|
-    Museums.all().each() do |museums|
-      if museum.id() == identity
-        return museum
+  define_singleton_method(:find) do |id|
+    found_museum = nil
+    Museum.all().each() do |museum|
+      if museum.id() == id
+        found_museum = museum
       end
     end
+    found_museum
   end
 
   define_singleton_method(:delete) do |id|
@@ -36,7 +38,7 @@ class Museum
   end
 
   define_method(:==) do |another_museum|
-    self.name == another_museum.name
+    self.name == another_museum.name && self.id == another_museum.id
   end
 
   define_method(:update) do |attributes|

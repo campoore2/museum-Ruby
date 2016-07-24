@@ -24,6 +24,16 @@ describe(Museum) do
     end
   end
 
+  describe('#find') do
+    it("finds a museum from the database") do
+      test_museum = Museum.new({:name => "David", :id => 1})
+      test_museum.save()
+      test_museum1 = Museum.new({:name => "Wolf Mother", :id => 3})
+      test_museum1.save()
+      expect(Museum.find(test_museum.id())).to(eq(test_museum))
+    end
+  end
+
   # describe("#delete") do
   #   it('will remove a museum from the database') do
   #     test_museum = Museum.new({:name => "Smithsonian"})
