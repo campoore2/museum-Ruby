@@ -4,7 +4,7 @@
 <h6>Click on a museum to edit it.</h6>
 <% if @museums.any?() %>
   <% @museums.each() do |museum| %>
-  <h5><a class="btn btn-default" href="/curator/museums/edit/<% museum.name() %>"><%= museum.name() %></a></h5>
+  <h5><a class="btn btn-default" href="/curator/museums/edit/<% museum.id() %>"><%= museum.name() %></a></h5>
   <% end %>
 <% else %>
   <h5>No Museums</h5>

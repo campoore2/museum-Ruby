@@ -33,16 +33,17 @@ get '/curator/museums/edit/' do
   erb(:edit_museum)
 end
 
-patch '/curator/museums/edit/museum' do
-  @name = params.fetch('museum_name')
+patch '/curator/museums/edit/:museum_id' do
+  museum = Museum.find(params.fetch('museum_id').to_i())
+  name = params.fetch('museum_name')
   @museum.update({:name => @name})
   @museums = Museum.all()
   erb(:curator)
 end
 
-delete('/curator/museums/edit/museum') do
-  @id = params.fetch('id').to_i
-  Museum.delete(@id)
+delete('/curator/museums/:museum_id/delete') do
+  museum = Museum.find(params.fetch('museum_id').to_i())
+  Museum.delete()
   @museums = Museums.all()
   erb(:curator)
 end
