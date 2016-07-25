@@ -1,34 +1,36 @@
 class Art
-  attr_reader(:name, :museum_id, :id)
+  attr_reader(:name, :id ,:museum_id)
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @museum_id = attributes.fetch(:museum_id).to_i()
-    @id = attributes[:id] || nil
+    @id = attributes.fetch(:id)
+    @museum_id = attributes.fetch(:museum_id)
   end
 
   define_method(:==) do |another_art|
-    (self.id() == another_art.id())
+     self.name == another_art.name && self.id() == another_art.id
   end
 
   define_singleton_method(:all) do
-    returned_art = DB.exec('SELECT id, name, museum_id FROM artworks;')
+    returned_art = DB.exec('SELECT * FROM artworks;')
     arts = []
     returned_art.each() do |art|
       name = art.fetch("name")
-      museum_id = art.fetch("museum_id").to_i()
       id = art.fetch("id").to_i()
+      museum_id = art.fetch("museum_id").to_i()
       arts.push(Art.new({:name => name, :museum_id => museum_id, :id => id}))
     end
     arts
   end
 
-  define_singleton_method(:find) do |identity|
+  define_singleton_method(:find) do |id|
+    found_art
     Art.all().each() do |art|
-      if art.id() == identity
-        return art
+      if art.id() == id
+        found_art = art
       end
     end
+    found_art
   end
 
   define_method(:save) do
@@ -36,7 +38,7 @@ class Art
     @id = result.first.fetch('id').to_i()
   end
 
-  define_singleton_method(:delete) do |id|
+  define_method(:delete) do |id|
     DB.exec("DELETE FROM artworks WHERE id = #{id}")
   end
 
