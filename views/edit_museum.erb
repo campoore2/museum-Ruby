@@ -15,11 +15,11 @@
   <button type="submit">Change</button>
 </form>
 
-<form action="/curator/museums/edit/museum/<%=@museum.id%>" method="post">
+<form action="/curator/museums/<%=@museum.id%>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
   <button type="submit" class="btn btn-danger">Remove this Museum</button>
 </form>
 <br>
 <br>
 <a class="btn btn-default" href="/">Home</a>
-<a class="btn btn-default" href="/curator/museums/">Back</a>
+<a class="btn btn-default" href="/curator/museums">Back</a>

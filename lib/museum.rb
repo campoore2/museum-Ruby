@@ -3,7 +3,7 @@ class Museum
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = attributes[:id]
+    @id = attributes.fetch(:id)
   end
 
   define_singleton_method(:all) do
@@ -32,9 +32,9 @@ class Museum
     found_museum
   end
 
-  define_singleton_method(:delete) do |id|
-    DB.exec("DELETE FROM museums WHERE name = #{'name'};")
-    DB.exec("DELETE FROM museums WHERE artwork_id = #{id};")
+  define_method(:delete) do
+    DB.exec("DELETE FROM museums WHERE id = #{self.id};")
+    DB.exec("DELETE FROM artworks WHERE museum_id = #{self.id};")
   end
 
   define_method(:==) do |another_museum|

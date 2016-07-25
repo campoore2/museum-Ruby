@@ -11,9 +11,21 @@ get('/') do
   erb(:index)
 end
 
-get '/curator/museums/' do
+get '/curator/museums' do
   @museums = Museum.all()
   erb(:curator)
+end
+
+get '/curator/museums/new' do
+  erb(:add_museum)
+end
+
+post '/curator/museums/new' do
+  museum_name = params.fetch("museum_name")
+  museum = Museum.new({:name => museum_name, :id => nil})
+  museum.save()
+  @museums = Museum.all()
+  redirect('/curator/museums')
 end
 
 get '/curator/museums/:id' do
@@ -25,29 +37,16 @@ end
 patch '/curator/museums/:museum_id/edit' do
   museum = Museum.find(params.fetch('museum_id').to_i())
   name = params.fetch('museum_name')
-  museum.update({:name => @name})
+  museum.update({:name => name})
   @museums = Museum.all()
   erb(:curator)
 end
-
-get '/curator/museums/new' do
-  erb(:add_museum)
-end
-
-post '/curator/museums/new' do
-  museum_name = params.fetch("museum_name")
-  museum = Museum.new({:name => museum_name})
-  museum.save()
-  @museums = Museum.all()
-  erb(:curator)
-end
-
 
 delete('/curator/museums/:museum_id/delete') do
   museum = Museum.find(params.fetch('museum_id').to_i())
-  Museum.delete()
-  @museums = Museums.all()
-  erb(:curator)
+  museum.delete
+  @museums = Museum.all()
+  redirect('/curator/museums')
 end
 
 get '/curator/artworks' do
