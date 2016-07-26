@@ -1,8 +1,8 @@
-<h1>Edit <%=@museum.name %></h1>
-<h6>Click on a museum to edit art.</h6>
+<h1>Edit: <%=@museum.name %></h1>
+<h6>Click on a art to edit it.</h6>
 <% if @arts.any?() %>
   <% @arts.each() do |art| %>
-  <h5><a class="btn btn-default" href="/curator/artworks/edit/<% art.name() %>"><%= art.name() %></a></h5>
+  <h5><a class="btn btn-default" href="/curator/artworks/<%=art.id%>"><%= art.name() %></a></h5>
   <% end %>
 <% else %>
   <h5>No Art</h5>

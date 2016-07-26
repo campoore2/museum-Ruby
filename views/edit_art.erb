@@ -1,0 +1,17 @@
+<h1>Edit: <%=@art.name %> </h1>
+
+<form action="/curator/artworks/<%=@art.id%>/edit" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="art_name">Update Art Name</label>
+  <input type="text" name="art_name">
+  <button type="submit">Change</button>
+</form>
+
+<form action="/curator/artworks/<%=@art.id%>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn btn-danger">Remove this Art</button>
+</form>
+<br>
+<br>
+<a class="btn btn-default" href="/">Home</a>
+<a class="btn btn-default" href="/curator/museums">Back</a>

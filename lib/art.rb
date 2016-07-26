@@ -24,7 +24,7 @@ class Art
   end
 
   define_singleton_method(:find) do |id|
-    found_art
+    found_art = nil
     Art.all().each() do |art|
       if art.id() == id
         found_art = art
@@ -45,7 +45,6 @@ class Art
   define_method(:update) do |attributes|
     @id = self.id()
     @name = attributes.fetch(:name)
-    @museum_id = attributes.fetch(:museum_id).to_i()
-    DB.exec("UPDATE museums SET name = '#{name}', museum_id = #{@museum_id} WHERE id = #{@id}")
+    DB.exec("UPDATE artworks SET name = '#{@name}', museum_id = #{@museum_id} WHERE id = #{@id}")
   end
 end
