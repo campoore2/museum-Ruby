@@ -11,14 +11,14 @@ describe(Art) do
     end
   end
 
-  # describe("#update") do
-  #   it "finds a artwork and changes its values" do
-  #     test_art = Art.new({:name => "David", :museum_id => 1})
-  #     test_art.save()
-  #     test_art.update({:name => "Commodus", :museum_id => 1})
-  #     expect(test_art.name()).to(eq('Commodus'))
-  #   end
-  # end
+  describe("#update") do
+    it "finds a artwork and changes its values" do
+      test_art = Art.new({:name => "David", :museum_id => 1})
+      test_art.save()
+      test_art.update({:name => "Commodus", :museum_id => 1})
+      expect(test_art.name()).to(eq('Commodus'))
+    end
+  end
 
   describe("#==") do
     it "compares two artworks" do
@@ -42,12 +42,12 @@ describe(Art) do
     end
   end
 
-  describe(".delete") do
-    it "deletes a artwork from the table" do
-      test_art = Art.new({:name => "David", :museum_id => 1})
-      test_art.save()
-      Art.delete(test_art.id())
-      expect(Art.all()).to(eq([]))
-    end
-  end
+  # describe("#delete") do
+  #   it "deletes a artwork from the table" do
+  #     test_art = Art.new({:name => "David", :museum_id => 1})
+  #     test_art.save()
+  #     Art.delete(test_art.id())
+  #     expect(Art.all()).to(eq([]))
+  #   end
+  # end
 end
