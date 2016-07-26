@@ -3,7 +3,7 @@ class Art
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = attributes[:id] || nil
+    @id = attributes.fetch(:id)
     @museum_id = attributes.fetch(:museum_id)
   end
 
