@@ -38,8 +38,8 @@ class Art
     @id = result.first.fetch('id').to_i()
   end
 
-  define_method(:delete) do |id|
-    DB.exec("DELETE FROM artworks WHERE id = #{id}")
+  define_method(:delete) do
+    DB.exec("DELETE FROM artworks WHERE id = #{self.id}")
   end
 
   define_method(:update) do |attributes|
