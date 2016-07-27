@@ -50,4 +50,11 @@ describe(Museum) do
       expect(test_museum).to(eq(test_museum2))
     end
   end
+
+  describe('#art') do
+    it('returns the id for the museum') do
+      test_museum = Museum.new({:name => "moba", :museum_id => 1})
+      expect(test_museum.art()).to(eq(1))
+    end
+  end
 end

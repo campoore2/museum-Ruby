@@ -44,10 +44,12 @@ describe(Art) do
 
   # describe("#delete") do
   #   it "deletes a artwork from the table" do
-  #     test_art = Art.new({:name => "David", :museum_id => 1})
-  #     test_art.save()
-  #     Art.delete(test_art.id())
-  #     expect(Art.all()).to(eq([]))
+  #     art = Art.new({:name => "David", :id => nil ,:museum_id => 1})
+  #     art.save()
+  #     art2 = Art.new({:name => "Jack", :id => nil, :museum_id => 1})
+  #     art2.save()
+  #     art.delete(art.id())
+  #     expect(Art.all()).to(eq([art2]))
   #   end
   # end
 end

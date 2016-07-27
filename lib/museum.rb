@@ -45,4 +45,15 @@ class Museum
     @name = attributes.fetch(:name)
     DB.exec("UPDATE museums SET name = '#{@name}' WHERE id = #{@id};")
   end
+
+  def art
+    list_art = []
+    art = DB.exec("SELECT * FROM artworks WHERE museum_id = #{self.id()};")
+    art.each() do |art|
+      name = task.fetch('name')
+      museum_id = task.fetch('museum_id').to_i()
+      list_art.push(Art.new({:name => name, :museum_id => museum_id}))
+    end
+  list_art
+  end
 end

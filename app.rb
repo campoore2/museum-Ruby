@@ -32,6 +32,12 @@ get '/curator/museums/:id' do
   @arts = Art.all()
   @museum = Museum.find(params['id'].to_i)
   @art = Art.find(params['id'].to_i)
+
+  art = params.fetch('art_name')
+  museum_id = params.fetch('museum_id').to_i()
+  @museum = Museum.find(museum_id)
+  @art = Art.new({:name => name, :museum_id => museum_id})
+  @art.save()
   erb(:edit_museum)
 end
 
@@ -62,7 +68,7 @@ end
 post '/curator/artworks/add' do
   name = params.fetch('artwork_name')
   museum_id = params.fetch('museum_id').to_i
-  art = Art.new({:name => name, :id => nil, :museum_id => museum_id})
+  @art = Museum.art({:name => name, :museum_id => museum_id})
   art.save()
   redirect('/curator/museums')
 end
