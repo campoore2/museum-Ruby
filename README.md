@@ -8,8 +8,8 @@ A curator can add, update or delete the museums they support. Add, delete, or up
 
 * Clone the repo from GitHub.com/campoore2/museum-Ruby
 * In PSQL:
-  * CREATE DATABASE museum_tracker
-  * CREATE TABLE museums (id serial PRIMARY KEY, name varchar, artwork_id int));
+  * CREATE DATABASE museum_tracker;
+  * CREATE TABLE museums (id serial PRIMARY KEY, name varchar);
   * CREATE TABLE artworks (id serial PRIMARY KEY, name varchar, museum_id int);
   * CREATE DATABASE museum_tracker_test WITH TEMPLATE museum_tracker;
 
